@@ -1,0 +1,18 @@
+<div class="product-box">
+    <h3 class="product-name">{{ item.title }}</h3>
+    <hr/>
+
+    <button class="box-link" (click)="remove(item.id)">Remove</button>
+
+    <a class="box-link" [routerLink]="['/products', item.id.toString()]" [queryParams]="{title: item.title}" (click)="goToProductInfo(item)">
+      🔍 View Info
+    </a>
+
+    <a class="box-link" [routerLink]="['/products/info']" [queryParams]="{ id: item.id, title: item.title }">
+      🔗 View With Query
+    </a>
+
+    <button class="box-link" (click)="goToProductInfo(item)">
+      🎯 Query in TypeScript
+    </button>
+  </div>

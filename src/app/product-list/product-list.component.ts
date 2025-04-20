@@ -1,22 +1,33 @@
-import { Component, OnInit, Query } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
-import { ActivatedRoute, RouterModule, Router } from '@angular/router';
-import { QueryParamsHandling } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { ProductDetailsComponent } from "../product-details/product-details.component";
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, NgFor, RouterModule],
+  imports: [CommonModule, RouterModule, ProductDetailsComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+  products: any[] = [];
   
-  products=[{id:1, title: 'Product A'},{id:2, title: 'Product B'},{id:3, title: 'Product c'}]
+  constructor(private router: Router) {}
+  
+  ngOnInit(): void {
+    // Initialize products in ngOnInit
+    this.products = [
+      {id: 1, title: 'Product A'},
+      {id: 2, title: 'Product B'},
+      {id: 3, title: 'Product C'}
+    ];
+  }
+  
+ removeProduct(id:number){
+  this.products = this.products.filter(p => p.id !== id)
+ }
 
-  constructor(private router: Router){}
-  ngOnInit(): void {}
-  
   goToProductInfo(item: any): void {
     this.router.navigate(['/products', item.id], {
       queryParams: {

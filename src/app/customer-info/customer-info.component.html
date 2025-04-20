@@ -1,0 +1,20 @@
+<section class="customer-info-container p-4">
+    <h2 class="mb-4 text-primary fw-bold">Customer Info</h2>
+  
+    <div class="mb-3">
+      <label class="form-label">First Name:</label>
+      <input #firstName type="text" class="form-control" placeholder="Enter your first name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name:</label>
+        <input #lastName type="text" class="form-control" placeholder="Enter your first name" />
+      </div>
+    <div class="mb-4">
+      <app-customer-address #homeAddress></app-customer-address>
+    </div>
+    
+    <div>
+      <button class="btn btn-success px-4" (click)="save()">💾 Save Info</button>
+    </div>
+  </section>
+  

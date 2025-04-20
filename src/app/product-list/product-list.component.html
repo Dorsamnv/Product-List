@@ -1,19 +1,10 @@
 <h1 class="product-title">Our Products</h1>
 
 <div class="flex-container">
-  <div *ngFor="let item of products" class="product-box">
-    <h3 class="product-name">{{ item.title }}</h3>
-
-    <a class="box-link" [routerLink]="['/products', item.id.toString()]" [queryParams]="{title: item.title}" (click)="goToProductInfo(item)">
-      🔍 View Info
-    </a>
-
-    <a class="box-link" [routerLink]="['/products/info']" [queryParams]="{ id: item.id, title: item.title }">
-      🔗 View With Query
-    </a>
-
-    <button class="box-link" (click)="goToProductInfo(item)">
-      🎯 Query in TypeScript
-    </button>
+  <ng-container *ngIf="products && products.length > 0">
+    <app-product-details *ngFor="let item of products" [item]="item" (removeItem)="removeProduct($event)"></app-product-details>
+  </ng-container>
+  <div *ngIf="!products || products.length === 0" class="no-products">
+    No products available
   </div>
 </div>

@@ -7,6 +7,7 @@ import { CategoryFeaturesComponent } from './category-features/category-features
 import { CategoryColorsComponent } from './category-colors/category-colors.component';
 import { features } from 'process';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CustomerInfoComponent } from './customer-info/customer-info.component';
 
 export const routes: Routes = [
     {path:'', component: HomeComponent},
@@ -20,5 +21,6 @@ export const routes: Routes = [
         ]
     },
     {path:'products/:id', component:ProductInfoComponent},
+    {path:'customer/info', component:CustomerInfoComponent},
     {path:'**', component:PageNotFoundComponent}
 ];
